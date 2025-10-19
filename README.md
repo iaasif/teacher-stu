@@ -39,3 +39,14 @@ A full-stack web application for teachers to manage students and attendance, and
    ```bash
    git clone git@github.com:iaasif/teacher-stu.git
    cd teacher-stu
+   
+2. open your postgresql,
+   run init.sql  file
+2. 1  cd frontend 
+   run npm i 
+   ng s -o 
+
+3.  cd ..
+    cd backend
+    npm i 
+    npm run dev
