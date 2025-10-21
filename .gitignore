@@ -19,17 +19,3 @@ coverage/
 .env.development.local
 .env.test.local
 .env.production.local
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-.DS_Store
-
-# Docker
-.dockerignore
-
-# Logs
-*.log
-app.log
