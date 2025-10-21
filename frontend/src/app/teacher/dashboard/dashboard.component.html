@@ -1,0 +1,10 @@
+<div class="p-6">
+    <h1 class="text-2xl font-bold mb-6">Teacher Dashboard</h1>
+    <div class="grid grid-cols-3 gap-4">
+        <div class="p-4 bg-white border-l-4 border-blue-500">Total Students<br><b>{{ totalStudents }}</b></div>
+        <div class="p-4 bg-white border-l-4 border-green-500">Present Today<br><b>{{ presentToday }}</b></div>
+        <div class="p-4 bg-white border-l-4 border-red-500">Absent Today<br><b>{{ absentToday }}</b></div>
+    </div>
+    <a routerLink="/teacher/students" class="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded">Manage
+        Students</a>
+</div>

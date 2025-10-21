@@ -1,0 +1,99 @@
+<!-- src/app/teacher/student-form/student-form.component.html -->
+<div *ngIf="isOpen" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+  <div class="bg-white rounded-xl shadow-lg w-full max-w-md max-h-[90vh] overflow-y-auto">
+    <div class="p-6">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-xl font-bold text-gray-800">
+          {{ student ? 'Edit Student' : 'Add New Student' }}
+        </h2>
+        <button (click)="onClose()" class="text-gray-500 hover:text-gray-700">
+          ✕
+        </button>
+      </div>
+
+      <form (ngSubmit)="onSubmit()" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Name *</label>
+          <input
+            [(ngModel)]="formData.name"
+            name="name"
+            type="text"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="John Doe"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Username *</label>
+          <input
+            [(ngModel)]="formData.username"
+            name="username"
+            type="text"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="johndoe"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+          <input
+            [(ngModel)]="formData.email"
+            name="email"
+            type="email"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="john@example.com"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Mobile *</label>
+          <input
+            [(ngModel)]="formData.mobile"
+            name="mobile"
+            type="text"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="1234567890"
+          />
+          <p class="mt-1 text-xs text-gray-500">Accepts formatted numbers (e.g., +1 123-456-7890)</p>
+        </div>
+
+        <div *ngIf="!student">
+          <label class="block text-sm font-medium text-gray-700 mb-1">Password *</label>
+          <input
+            [(ngModel)]="formData.password"
+            name="password"
+            type="password"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="••••••"
+          />
+        </div>
+
+        <div *ngIf="errors.length > 0" class="p-3 bg-red-50 text-red-600 text-sm rounded">
+          <ul class="list-disc pl-5">
+            <li *ngFor="let err of errors">{{ err }}</li>
+          </ul>
+        </div>
+
+        <div class="flex justify-end space-x-3 pt-2">
+          <button
+            type="button"
+            (click)="onClose()"
+            class="px-4 py-2 text-gray-700 bg-gray-200 rounded hover:bg-gray-300"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            [disabled]="isSubmitting"
+            class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50"
+          >
+            <span *ngIf="!isSubmitting">
+              {{ student ? 'Update' : 'Add Student' }}
+            </span>
+            <span *ngIf="isSubmitting">Saving...</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

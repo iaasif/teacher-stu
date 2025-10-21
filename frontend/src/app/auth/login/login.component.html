@@ -1,0 +1,49 @@
+<div class="min-h-screen flex items-center justify-center bg-gray-50">
+    <div class="w-full max-w-md p-8 bg-white rounded shadow">
+        <h2 class="text-2xl font-bold text-center mb-6">
+            {{ showRegister ? 'Teacher Registration' : 'Login' }}
+        </h2>
+
+        <!-- Role Toggle (only in login mode) -->
+        <div *ngIf="!showRegister" class="flex mb-4">
+            <button (click)="role='teacher'"
+                [class]="'flex-1 py-2 ' + (role==='teacher'?'bg-blue-600 text-white':'bg-gray-200')">
+                Teacher
+            </button>
+            <button (click)="role='student'"
+                [class]="'flex-1 py-2 ' + (role==='student'?'bg-green-600 text-white':'bg-gray-200')">
+                Student
+            </button>
+        </div>
+
+        <form (ngSubmit)="showRegister ? register() : login()" #f="ngForm" class="space-y-3">
+            <!-- Username -->
+            <input name="u" ngModel required placeholder="Username" class="w-full p-2 border rounded">
+
+            <!-- Email (only in register mode) -->
+            <input *ngIf="showRegister" name="e" ngModel required type="email" placeholder="Email"
+                class="w-full p-2 border rounded">
+
+            <!-- Mobile (only in register mode) -->
+            <input *ngIf="showRegister" name="m" ngModel required placeholder="Mobile (10-15 digits)"
+                class="w-full p-2 border rounded">
+
+            <!-- Password -->
+            <input name="p" ngModel required type="password" placeholder="Password" class="w-full p-2 border rounded">
+
+            <!-- Submit Button -->
+            <button [disabled]="f.invalid" class="w-full bg-blue-600 text-white p-2 rounded">
+                {{ showRegister ? 'Register' : 'Login' }}
+            </button>
+        </form>
+
+        <div *ngIf="error" class="mt-3 text-red-600">{{ error }}</div>
+
+        <!-- Toggle between login/register -->
+        <div class="mt-4 text-center">
+            <button (click)="toggleMode()" class="text-blue-600 hover:underline">
+                {{ showRegister ? '← Back to Login' : 'Register as Teacher' }}
+            </button>
+        </div>
+    </div>
+</div>
