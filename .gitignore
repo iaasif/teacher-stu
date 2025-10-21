@@ -1,17 +1,10 @@
 # Node.js
 node_modules/
-npm-debug.log
-yarn-error.log
-yarn-debug.log
-.pnpm-debug.log
-.npm
-.yarn
+
 
 # Build artifacts
 dist/
-out/
-build/
-coverage/
+
 
 # Environment
 .env
